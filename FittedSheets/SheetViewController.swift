@@ -293,8 +293,12 @@ public class SheetViewController: UIViewController {
         
         if let nav = self.parentVC?.navigationController, let parentView = self.parentVC?.view {
             secondOverlayView?.removeFromSuperview()
-            let viewRect = parentView.convert(parentView.bounds, to: nil)
-            secondOverlayView = UIView(frame: CGRect(x: 0, y: 0, width: viewRect.width, height: viewRect.origin.y))
+            if let secondOverlayRect = options.secondOverlayRect {
+                secondOverlayView = UIView(frame: secondOverlayRect)
+            } else {
+                let viewRect = parentView.convert(parentView.bounds, to: nil)
+                secondOverlayView = UIView(frame: CGRect(x: 0, y: 0, width: viewRect.width, height: viewRect.origin.y))
+            }
             nav.view.addSubview(secondOverlayView!)
             secondOverlayView?.backgroundColor = self.hasBlurBackground ? .clear : self.overlayColor
         }

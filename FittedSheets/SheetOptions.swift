@@ -40,6 +40,7 @@ public struct SheetOptions {
     
     public var horizontalPadding: CGFloat = 0
     public var maxWidth: CGFloat?
+    public var secondOverlayRect: CGRect?
     
     /* These properties will be removed in an upcoming release, leaving them for now so people can transition slowly */
     
@@ -67,7 +68,8 @@ public struct SheetOptions {
                 shrinkPresentingViewController: Bool? = nil,
                 useInlineMode: Bool? = nil,
                 horizontalPadding: CGFloat? = nil,
-                maxWidth: CGFloat? = nil) {
+                maxWidth: CGFloat? = nil,
+                secondOverlayRect: CGRect? = nil) {
         let defaultOptions = SheetOptions.default
         self.pullBarHeight = pullBarHeight ?? defaultOptions.pullBarHeight
         self.presentingViewCornerRadius = presentingViewCornerRadius ?? defaultOptions.presentingViewCornerRadius
@@ -79,6 +81,7 @@ public struct SheetOptions {
         self.horizontalPadding = horizontalPadding ?? defaultOptions.horizontalPadding
         let maxWidth = maxWidth ?? defaultOptions.maxWidth
         self.maxWidth = maxWidth == 0 ? nil : maxWidth
+        self.secondOverlayRect = secondOverlayRect
     }
     
     @available(*, unavailable, message: "cornerRadius, minimumSpaceAbovePullBar, gripSize and gripColor are now properties on SheetViewController. Use them instead.")
