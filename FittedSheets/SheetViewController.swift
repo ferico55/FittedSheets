@@ -300,6 +300,7 @@ public class SheetViewController: UIViewController {
                 secondOverlayView = UIView(frame: CGRect(x: 0, y: 0, width: viewRect.width, height: viewRect.origin.y))
             }
             nav.view.addSubview(secondOverlayView!)
+            secondOverlayView?.isUserInteractionEnabled = !allowGestureThroughOverlay
             secondOverlayView?.backgroundColor = self.hasBlurBackground ? .clear : self.overlayColor
         }
     }
